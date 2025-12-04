@@ -1,8 +1,8 @@
 import Calculo from "./calculo";
 
-export default class Subtracao extends Calculo{
+export default class Subtracao implements Calculo {
     public calcular(numero1: number, numero2: number): number {
-        return numero1 - numero2
+        return numero1 - numero2;
     }
 }
 
