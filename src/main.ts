@@ -1,4 +1,5 @@
 import * as readline from 'readline';
+import Calculo from './calculo';
 import Mensagens from './mensagens';
 import Multiplicacao from './multiplicacao';
 import Soma from './soma';
@@ -22,18 +23,17 @@ let iniciar = () => {
     }
     console.log(`Estas foram suas instruções: ${instrucoes}\n`)
 
+    let calculo: Calculo | null = null;
+
     switch (operacao) {
       case 'Somar':
-        let calculo = new Soma()
-        console.log(`O resultado da operação é: ${calculo.calcular(numero1, numero2)}\n`)
+        calculo = new Soma()
         break;
       case 'Subtrair':
         calculo = new Subtracao()
-        console.log(`O resultado da operação é: ${calculo.calcular(numero1, numero2)}\n`)
         break;
       case 'Multiplicar':
         calculo = new Multiplicacao()
-        console.log(`O resultado da operação é: ${calculo.calcular(numero1, numero2)}\n`)
         break;
       case 'Sair':
         console.log(`Até uma próxima, falou...`)
@@ -41,6 +41,11 @@ let iniciar = () => {
       default:
         console.log(`Operação não entendida :(`)
     }
+
+    if (calculo) {
+      console.log(`O resultado da operação é: ${calculo.calcular(numero1, numero2)}\n`)
+    }
+
     leitor.close()
     if (operacao != 'Sair') {
       mensagens.comoUsar()
